@@ -1,3 +1,4 @@
+/* Begin of 'VEC.H' file */
 /*FILE NAME: VEC.H
  *PROGRAMMER: AS5
  *DATE: 08.06.2016
@@ -148,6 +149,8 @@ __inline VEC PointTransform4( VEC V, MATR M )
 }
 /* End of 'PointTransform4' function */
 
+/* Matrix */
+
 /* Begin of 'MatrTranslate' function */
 __inline MATR MatrTranslate( VEC D )
 {
@@ -205,7 +208,7 @@ __inline MATR MatrRotateY( DBL AngleDegree )
   MATR M = 
   {
     {
-     {cos(AngleDegree),   0, -sin(AngleDegree),   0},
+     {cos(AngleDegree),  0, -sin(AngleDegree),   0},
      {0,                 1,                 0,   0},
      {sin(AngleDegree),  0,  cos(AngleDegree),   0},
      {0,                 0,                 0,   1}
@@ -240,9 +243,9 @@ __inline MATR MatrRotate( DBL AngleDegree, VEC R )
   {
     {
       {co + V.X * V.X * (1 - co),        V.X * V.Y * (1 - co) - V.Z * si,  V.X * V.Z * (1 - co) + V.Y * si, 0},
-      {V.Y * V.X * (1 - co) + V.Z * si,  co + V.Y * V.Y * (1 - co),        V.Y * V.Z * (1 - co) - V.X * si, 0},
-      {V.Z * V.X * (1 - co) - V.Y * si,  V.Z * V.Y * (1 - co) + V.X * si,  co + V.Z * V.Z * (1 - co),       0},
-      {0,                                0,                                0,                               1}
+      {V.Y * V.X * (1 - co) + V.Z * si,        co + V.Y * V.Y * (1 - co),  V.Y * V.Z * (1 - co) - V.X * si, 0},
+      {V.Z * V.X * (1 - co) - V.Y * si,  V.Z * V.Y * (1 - co) + V.X * si,        co + V.Z * V.Z * (1 - co), 0},
+      {                               0,                                0,                         0,       1}
     }
   };
 
@@ -281,7 +284,21 @@ __inline MATR MatrMulMatr( MATR M1, MATR M2 )
 /* End of 'MatrMulMatr' function */
 
 /* Begin of 'MatrTranspose' function */
-__inline MATR MatrTranspose( MATR M );
+__inline MATR MatrTranspose( MATR M )
+{
+  INT i, j;
+  DBL tmp;
+
+  for (i = 0; i < 4; i++)
+    for (j = i; j < 4; j++)
+    {
+      tmp = M.A[i][j];
+      M.A[i][j] = M.A[j][i];
+      M.A[j][i] = tmp;
+    }
+  
+  return M;
+}
 
 __inline DBL MatrDeterm3x3( DBL A11, DBL A12, DBL A13, DBL A21, DBL A22, DBL A23, DBL A31, DBL A32, DBL A33 )
 {
@@ -368,7 +385,10 @@ __inline MATR MatrInverse( MATR M )
   r.A[3][2] = -MatrDeterm3x3(M.A[0][0], M.A[0][1], M.A[0][2],
                              M.A[1][0], M.A[1][1], M.A[1][2],
                              M.A[2][0], M.A[2][1], M.A[2][2]) / det;
+  return r;
 }
 /* End of 'MatrInverse' function */
 
 #endif /* __VEC_H_ */
+
+/* End of 'VEC.H' file */
