@@ -77,6 +77,7 @@ LRESULT CALLBACK MyWinFunc( HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam )
   case WM_CREATE:
     SetTimer(hWnd, 15, 10, NULL);
     hDC = GetDC(hWnd);
+    LoadSphere();
     hMemDC = CreateCompatibleDC(hDC);
     ReleaseDC(hWnd, hDC);
     return 0;

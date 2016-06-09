@@ -10,6 +10,7 @@
 #include <windows.h>
 
 VOID DrawSphere( HDC hDC, INT Xc, INT Yc );
+VOID LoadSphere( VOID );
 
 #endif /* __SPHERE_H_ */
 
