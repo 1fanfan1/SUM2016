@@ -21,7 +21,7 @@ void main( void )
 {
   gl_Position = MatrProj * MatrView * MatrWorld * vec4(InPosition, 1);
 
-  DrawColor = InColor; //vec4(InNormal * 2, 1);
+  DrawColor = /*InColor;*/vec4(InNormal * 2, 1);
   DrawPos = InPosition;
   DrawNormal = mat3(inverse(transpose(MatrWorld))) * InNormal;
 }

@@ -1,2 +1,6 @@
 VERT: No file
 VERT: No file
+VERT: 0(26) : error C1216: dereference of non-pointer
+
+VERT: 0(26) : error C1035: assignment of incompatible types
+

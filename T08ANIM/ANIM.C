@@ -30,7 +30,6 @@ VOID AS5_AnimInit( HWND hWnd )
   PIXELFORMATDESCRIPTOR pfd = {0};
 
   LARGE_INTEGER t;
-  
 
   AS5_Anim.NumOfUnits = 0;
   
@@ -93,7 +92,7 @@ VOID AS5_AnimCopyFrame( VOID )
 
 VOID AS5_AnimAddUnit( as5UNIT *Uni )
 {
-  if(AS5_Anim.NumOfUnits < AS5_MAX_UNITS)
+  if (AS5_Anim.NumOfUnits < AS5_MAX_UNITS)
   {
     AS5_Anim.Units[AS5_Anim.NumOfUnits++] = Uni; 
     Uni->Init(Uni, &AS5_Anim);
@@ -215,10 +214,10 @@ VOID AS5_AnimRender( VOID )
                                          (FLT)(t.QuadPart - AS5_OldTimeFPS);
     AS5_OldTimeFPS = t.QuadPart;
     AS5_FrameCounter = 0;
-    sprintf(str, "Anim FPS: %.5f Mouse Coord:  %i, %i JoyStick Coord: %f %f", AS5_Anim.FPS, AS5_Anim.Mx, AS5_Anim.My, AS5_Anim.JX,AS5_Anim.JY);
+    sprintf(str, "Anim FPS: %.5f Mouse Coord:  %i, %i JoyStick Coord: %f %f", AS5_Anim.FPS, AS5_Anim.Mx, AS5_Anim.My, AS5_Anim.JX ,AS5_Anim.JY);
     SetWindowText(AS5_Anim.hWnd, str);
   }
-  AS5_OldTime = t.QuadPart;  
+  AS5_OldTime = t.QuadPart;
 
   for (i = 0; i < AS5_Anim.NumOfUnits; i++)  
     AS5_Anim.Units[i]->Response(AS5_Anim.Units[i], &AS5_Anim);
@@ -231,10 +230,10 @@ VOID AS5_AnimRender( VOID )
     AS5_Anim.Units[i]->Render(AS5_Anim.Units[i], &AS5_Anim);
   }
 
-  dx += AS5_Anim.JX / 2;
-  dy += AS5_Anim.JY / 2;
-  dz += AS5_Anim.JZ / 2;
-  AS5_RndMatrView = MatrView(VecSet(dx, dy, dz), VecSet(0, 0, 0), VecSet(0, 1, 0));
+  dx += AS5_Anim.JX;
+  dy += AS5_Anim.JY;
+  dz += AS5_Anim.JZ;
+  AS5_RndMatrView = MatrView(VecSet(dx - 40, dy - 40, dz - 40), VecSet(5, 5, 5), VecSet(0, 1, 0));
   glLoadMatrixf(&AS5_RndMatrView.A[0][0]);
   glFinish();
 }

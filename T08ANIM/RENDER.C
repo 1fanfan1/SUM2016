@@ -9,9 +9,9 @@ MATR AS5_RndMatrWorld/* = MatrIdentity()*/,
      AS5_RndMatrView /* = MatrMulMatr(MatrIdentity, MatrTranslate(VecSet(-1, -1, 0)))*/,
      AS5_RndMatrProj;
 
-FLT  AS5_RndProjDist  =   0.1,
-     AS5_RndFarClip   =  100,
-     AS5_RndProjSize  =   0.1;
+FLT  AS5_RndProjDist  = 0.1,
+     AS5_RndFarClip   = 100,
+     AS5_RndProjSize  = 0.1;
 
 UINT AS5_RndPrg;
 

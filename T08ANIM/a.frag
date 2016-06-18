@@ -25,5 +25,5 @@ void main( void )
   float nl = max(dot(L, normalize(DrawNormal)), 0);
 
 
-   OutColor = DrawColor * nl;
+  OutColor = DrawColor * nl;
 }

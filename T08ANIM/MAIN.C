@@ -8,7 +8,7 @@
 
 
 
-LRESULT CALLBACK AS5_MyWindowFunc( HWND hWnd, UINT Msg,WPARAM wParam, LPARAM lParam)
+LRESULT CALLBACK AS5_MyWindowFunc( HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 {    
   MINMAXINFO *MinMax;
 
@@ -97,7 +97,7 @@ INT WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, CHAR *CmdLine,
   
   if (!RegisterClass(&wc))
   {
-    MessageBox(NULL,"Error register window class","Error",MB_OK);
+    MessageBox(NULL,"Error register window class","Error", MB_OK);
     return 0;
   }
 
@@ -114,9 +114,11 @@ INT WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, CHAR *CmdLine,
   i = 1, j = 1;
    
   /*AS5_AnimAddUnit(AS5_UnitCreateBall(i * (AS5_Anim.W / 3.0) + 100, j * (AS5_Anim.H / 4.0) + 100, 0 ));*/
-  //for(i=0; i < 4; i++)
-  //  for(j=0; j < 4; j++)  
-      AS5_AnimAddUnit(AS5_UnitCreateCube(i * (AS5_Anim.W / 3.0) + 100, j * (AS5_Anim.H / 4.0) + 100, 0 ));
+  //for(i = 0; i < 4; i++)
+  //  for(j = 0; j < 4; j++)  
+  AS5_AnimAddUnit(AS5_UnitCreateCube(0, 0, 0));
+ 
+  //AS5_AnimAddUnit(AS5_UnitCreateCity(i * (AS5_Anim.W / 3.0) + 100, j * (AS5_Anim.H / 4.0) + 100, 0));
   while (GetMessage(&msg, NULL, 0, 0))
   {
     TranslateMessage(&msg);
