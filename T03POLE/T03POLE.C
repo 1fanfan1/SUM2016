@@ -254,4 +254,4 @@ VOID FlipFullScreen( HWND hWnd )
 } /* End of 'FlipFullScreen' function */
 
 
-/* End of T02EYES.C file*/
+/* End of T03POLE.C file*/
